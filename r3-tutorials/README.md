@@ -17,7 +17,6 @@ sudo docker run -it --rm --net ros_network --name listener --env ROS_HOSTNAME=li
 ```
 
 ## Development
-Based on https://hub.docker.com/_/ros/
 
 ```sh
 git clone https://github.com/DTU-R3/Docker-ROS.git
@@ -26,3 +25,4 @@ sudo docker build --tag dtur3/r3-tutorials .
 sudo docker login
 sudo docker push dtur3/r3-tutorials
 ```
+

@@ -20,6 +20,13 @@ sudo docker network create ros_network
 sudo docker network inspect ros_network
 ```
 
+## Build DTU-R3 Docker images locally (optional)
+Instead of fetching them from Docker Hub:
+
+```sh
+sudo ./build.sh
+```
+
 ## Run ROS server and master
 
 ```sh
@@ -34,3 +41,4 @@ sudo docker restart ros_master
 ## Test basic ROS communication
 
 See [tutorials](./r3-tutorials/README.md).
+
