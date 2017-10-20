@@ -8,19 +8,21 @@ See [main README](../README.md).
 
 ## Development
 
-```sh
+```bash
 git clone https://github.com/DTU-R3/Docker-ROS.git
 cd ./Docker-ROS/r3-base/
 sudo docker build --tag dtur3/r3-base .
 
 sudo docker login
 
-#either
-sudo docker tag dtur3/r3-base dtur3/r3-base:arm
-sudo docker push dtur3/r3-base:arm
-#or (depending on platform)
-sudo docker tag dtur3/r3-base dtur3/r3-base:amd64
-sudo docker push dtur3/r3-base:amd64
+arch=`dpkg --print-architecture`
+if [[ $arch =~ ^arm ]]; then arch="arm";
+elif [[ $arch =~ ^amd64 ]]; then arch="amd64";
+else echo "Unsupported architecture" >&2; exit 1; fi
+echo "Architecture: $arch"
+
+sudo docker tag dtur3/r3-base dtur3/r3-base:$arch
+sudo docker push dtur3/r3-base:$arch
 
 #push manifest - method while waiting for https://github.com/docker/cli/pull/138
 sudo docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd):/host weshigbee/manifest-tool push from-spec /host/manifest.yaml
