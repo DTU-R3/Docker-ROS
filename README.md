@@ -33,4 +33,4 @@ sudo docker restart ros_master
 
 ## Test basic ROS communication
 
-See [tutorials](../r3-tutorials/README.md).
+See [tutorials](./r3-tutorials/README.md).
