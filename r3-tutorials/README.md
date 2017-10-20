@@ -22,7 +22,17 @@ sudo docker run -it --rm --net ros_network --name listener --env ROS_HOSTNAME=li
 git clone https://github.com/DTU-R3/Docker-ROS.git
 cd ./Docker-ROS/r3-tutorials/
 sudo docker build --tag dtur3/r3-tutorials .
+
 sudo docker login
-sudo docker push dtur3/r3-tutorials
+
+#either
+sudo docker tag dtur3/r3-tutorials dtur3/r3-tutorials:arm
+sudo docker push dtur3/r3-tutorials:arm
+#or (depending on platform)
+sudo docker tag dtur3/r3-tutorials dtur3/r3-tutorials:amd64
+sudo docker push dtur3/r3-tutorials:amd64
+
+#push manifest - method while waiting for https://github.com/docker/cli/pull/138
+sudo docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd):/host weshigbee/manifest-tool push from-spec /host/manifest.yaml
 ```
 

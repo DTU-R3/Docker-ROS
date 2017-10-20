@@ -33,9 +33,14 @@ sudo ./build.sh
 sudo docker run -dit --restart unless-stopped --net ros_network -p 11311:11311 --env ROS_HOSTNAME=ros_master --name ros_master dtur3/r3-base roscore
 
 #Additional commands:
+sudo docker ps -a
 sudo docker logs -f ros_master
-sudo docker exec -it ros_master /bin/bash
+sudo docker stop ros_master
+sudo docker rm ros_master
 sudo docker restart ros_master
+sudo docker exec -it ros_master /bin/bash
+sudo docker run --rm weshigbee/manifest-tool inspect dtur3/r3-base
+sudo docker images -a
 ```
 
 ## Test basic ROS communication
