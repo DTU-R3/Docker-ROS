@@ -1,8 +1,13 @@
-# Docker + ROS
-DTU-R3 Docker images for ROS
+# DTU-R3: Docker + ROS
+DTU-R3 “Remote Reality Robot” Docker images based on ROS “Robot Operating System”.
 
-Made for Raspberry Pi 3. Tested with Raspbian 9 Stretch.
-Should work with any Debian 9+.
+Made for Raspberry Pi 3 (ARMv8-A).
+Tested with Raspbian 9 Stretch.
+
+* Based on https://hub.docker.com/_/ros/ ros:kinetic-robot-*
+	* http://wiki.ros.org/docker/Tutorials/Docker
+* Images https://hub.docker.com/u/dtur3/
+* Sources https://github.com/DTU-R3/Docker-ROS
 
 ## Install Docker
 
@@ -17,8 +22,6 @@ sudo docker network inspect ros_network
 
 ## Run ROS server and master
 
-Based on https://hub.docker.com/_/ros/
-
 ```sh
 sudo docker run -dit --restart unless-stopped --net ros_network -p 11311:11311 --env ROS_HOSTNAME=ros_master --name ros_master dtur3/r3-base roscore
 
@@ -30,10 +33,4 @@ sudo docker restart ros_master
 
 ## Test basic ROS communication
 
-```sh
-#Start a ROS master; only if you have no existing master running:
-sudo docker run -it --rm --net ros_network --name ros_master dtur3/r3-tutorials roscore
-# Start two ROS nodes:
-sudo docker run -it --rm --net ros_network --name talker --env ROS_HOSTNAME=talker --env ROS_MASTER_URI=http://ros_master:11311 dtur3/r3-tutorials rosrun roscpp_tutorials talker
-sudo docker run -it --rm --net ros_network --name listener --env ROS_HOSTNAME=listener --env ROS_MASTER_URI=http://ros_master:11311 dtur3/r3-tutorials rosrun roscpp_tutorials listener
-```
+See [tutorials](../r3-tutorials/README.md).
