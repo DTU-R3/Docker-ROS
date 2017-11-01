@@ -4,7 +4,7 @@ DTU-R3 “Remote Reality Robot” Docker images based on ROS “Robot Operating 
 Made for Raspberry Pi 3 (ARMv8-A).
 Tested with Raspbian 9 Stretch.
 
-* Based on https://hub.docker.com/_/ros/ ros:kinetic-robot-*
+* Based on https://hub.docker.com/_/ros/ ros:kinetic-ros-base-xenial
 	* http://wiki.ros.org/docker/Tutorials/Docker
 * Images https://hub.docker.com/u/dtur3/
 * Sources https://github.com/DTU-R3/Docker-ROS
@@ -30,7 +30,7 @@ sudo ./build.sh
 ## Run ROS server and master
 
 ```sh
-sudo docker run -dit --restart unless-stopped --net ros_network -p 11311:11311 --env ROS_HOSTNAME=ros_master --name ros_master dtur3/r3-base roscore
+sudo docker run -dit --restart unless-stopped --net ros_network -p 11311:11311 --env ROS_HOSTNAME=ros_master --name ros_master ros:kinetic-ros-base-xenial roscore
 
 # Additional commands:
 sudo docker ps -a
