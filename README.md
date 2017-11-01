@@ -16,7 +16,7 @@ curl -sSL https://get.docker.com | sh
 
 sudo docker network create ros_network
 
-#Additional commands:
+# Additional commands:
 sudo docker network inspect ros_network
 ```
 
@@ -32,7 +32,7 @@ sudo ./build.sh
 ```sh
 sudo docker run -dit --restart unless-stopped --net ros_network -p 11311:11311 --env ROS_HOSTNAME=ros_master --name ros_master dtur3/r3-base roscore
 
-#Additional commands:
+# Additional commands:
 sudo docker ps -a
 sudo docker logs -f ros_master
 sudo docker stop ros_master
@@ -46,4 +46,8 @@ sudo docker images -a
 ## Test basic ROS communication
 
 See [tutorials](./r3-tutorials/README.md).
+
+## Run Parallax ArloBot
+
+See [ArloBot](./r3-arlobot/README.md).
 
