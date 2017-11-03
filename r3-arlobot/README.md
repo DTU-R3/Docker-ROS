@@ -7,9 +7,14 @@
 ## Use
 See [main README](../README.md).
 
-Plug the Arlobot by USB first.
+First, ensure that your ros_master is running, and plug the Arlobot by USB.
 
 ```sh
+sudo docker run --rm --net ros_network --env ROS_MASTER_URI=http://ros_master:11311 dtur3/r3-arlobot rosparam set /arlobot/port /dev/ttyUSB0
+
+sudo docker run -dit --restart unless-stopped --privileged --net ros_network --env ROS_MASTER_URI=http://ros_master:11311 --env ROS_HOSTNAME=arlobot --name arlobot dtur3/r3-arlobot roslaunch arlobot_bringup minimal.launch --screen
+
+# Alternative: Expose only one USB port, but does not work if USB is disconnected/reconnected:
 sudo docker run -dit --restart unless-stopped --device=/dev/ttyUSB0 --net ros_network --env ROS_MASTER_URI=http://ros_master:11311 --env ROS_HOSTNAME=arlobot --name arlobot dtur3/r3-arlobot roslaunch arlobot_bringup minimal.launch --screen
 ```
 
