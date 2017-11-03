@@ -30,7 +30,7 @@ sudo ./build.sh
 ## Run ROS server and master
 
 ```sh
-sudo docker run -dit --restart unless-stopped --net ros_network -p 11311:11311 --env ROS_HOSTNAME=ros_master --name ros_master ros:kinetic-ros-base-xenial roscore
+sudo docker run -dit --restart unless-stopped --log-opt max-size=10m --net ros_network -p 11311:11311 --env ROS_HOSTNAME=ros_master --name ros_master ros:kinetic-ros-base-xenial roscore
 
 # Additional commands:
 sudo docker ps -a

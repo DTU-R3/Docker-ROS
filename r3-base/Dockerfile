@@ -4,8 +4,9 @@ RUN apt update && \
 	apt upgrade -y
 
 RUN apt install -y \
+	htop \
 	less \
-	nano
+	nano \
+	screen
 
 RUN rm -rf /var/lib/apt/lists/
-
