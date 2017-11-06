@@ -28,7 +28,7 @@ RUN /bin/bash -c " \
 	echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc && \
 	source ~/catkin_ws/devel/setup.bash && \
 	mkdir -p ~/.arlobot && \
-	cp -f ~/catkin_ws/src/Arlobot/src/arlobot/arlobot_bringup/param/arlobot.yaml ~/.arlobot/ && \
+	ln -fs ~/catkin_ws/src/Arlobot/src/arlobot/arlobot_bringup/param/arlobot.yaml ~/.arlobot/ && \
 	echo Done. \
 	"
 

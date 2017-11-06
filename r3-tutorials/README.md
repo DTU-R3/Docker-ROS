@@ -12,8 +12,15 @@ sudo docker run -it --rm --net ros_network --name ros_master dtur3/r3-tutorials 
 sudo docker network create ros_network
 
 # Start two ROS nodes:
-sudo docker run -it --rm --net ros_network --name talker --env ROS_HOSTNAME=talker --env ROS_MASTER_URI=http://ros_master:11311 dtur3/r3-tutorials rosrun roscpp_tutorials talker
-sudo docker run -it --rm --net ros_network --name listener --env ROS_HOSTNAME=listener --env ROS_MASTER_URI=http://ros_master:11311 dtur3/r3-tutorials rosrun roscpp_tutorials listener
+sudo docker run -it --rm \
+	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--env ROS_HOSTNAME=talker --name talker dtur3/r3-tutorials \
+	rosrun roscpp_tutorials talker
+
+sudo docker run -it --rm \
+	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--env ROS_HOSTNAME=listener --name listener dtur3/r3-tutorials \
+	rosrun roscpp_tutorials listener
 ```
 
 ## Development

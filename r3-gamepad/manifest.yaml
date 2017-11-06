@@ -1,0 +1,13 @@
+image: dtur3/r3-gamepad:latest
+manifests:
+  -
+    image: dtur3/r3-gamepad:arm
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: dtur3/r3-gamepad:amd64
+    platform:
+      architecture: amd64
+      os: linux
+
