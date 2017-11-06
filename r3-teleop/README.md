@@ -8,16 +8,16 @@ See [main README](../README.md).
 
 First, ensure that your ros_master is running.
 
-## Keyboard
+### Keyboard
 
 ```sh
 sudo docker run -it --rm \
 	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
 	--env ROS_HOSTNAME=keyboard_teleop --name keyboard_teleop dtur3/r3-teleop \
-	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --screen -v'
+	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --screen'
 ```
 
-## Gamepad
+### Gamepad
 First, plug the Xbox Controller gamepad.
 
 ```sh
@@ -29,7 +29,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
 ```
 
-### Alternative
+#### Alternative
 Expose only one USB port, but does not work if USB is disconnected/reconnected:
 
 ```sh
