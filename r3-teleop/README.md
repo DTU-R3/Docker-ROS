@@ -62,9 +62,13 @@ sudo docker push dtur3/r3-teleop:$arch
 #push manifest - method while waiting for https://github.com/docker/cli/pull/138
 sudo docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd):/host weshigbee/manifest-tool push from-spec /host/manifest.yaml
 
-#Test the USB connection to the gamepad
+#Test the USB connection to the gamepad when manipulating the gamepad
 sudo docker run -it --rm --net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
 	--name gamepad_listener --env ROS_HOSTNAME=gamepad_listener dtur3/r3-teleop \
-	rostopic echo joy 
-```
+	rostopic echo joy
 
+#Test the output of the smoothed velocity when manipulating the gamepad
+sudo docker run -it --rm --net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--name gamepad_listener --env ROS_HOSTNAME=gamepad_listener dtur3/r3-teleop \
+	rostopic echo /teleop_velocity_smoother/raw_cmd_vel
+```

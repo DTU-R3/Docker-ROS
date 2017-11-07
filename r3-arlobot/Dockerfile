@@ -11,7 +11,8 @@ RUN apt install -y \
 		ros-kinetic-robot-state-publisher \
 		ros-kinetic-tf \
 		ros-kinetic-xacro \
-		ros-kinetic-yocs-cmd-vel-mux
+		ros-kinetic-yocs-cmd-vel-mux \
+		ros-kinetic-yocs-velocity-smoother
 
 RUN rm -rf /var/lib/apt/lists/
 
@@ -31,4 +32,3 @@ RUN /bin/bash -c " \
 	ln -fs ~/catkin_ws/src/Arlobot/src/arlobot/arlobot_bringup/param/arlobot.yaml ~/.arlobot/ && \
 	echo Done. \
 	"
-

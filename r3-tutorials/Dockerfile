@@ -8,4 +8,3 @@ RUN apt install -y \
 	ros-kinetic-common-tutorials
 
 RUN rm -rf /var/lib/apt/lists/
-

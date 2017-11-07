@@ -42,7 +42,7 @@ sudo docker stop ros_master
 sudo docker rm ros_master
 sudo docker restart ros_master
 sudo docker exec -it ros_master /bin/bash
-sudo docker run --rm weshigbee/manifest-tool inspect dtur3/r3-base
+sudo docker run --rm weshigbee/manifest-tool inspect dtur3/r3-tutorials
 sudo docker images -a
 ```
 

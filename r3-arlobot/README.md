@@ -55,4 +55,3 @@ sudo docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd
 sudo apt install -y screen
 sudo screen /dev/ttyUSB0 115200
 ```
-
