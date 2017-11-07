@@ -1,12 +1,12 @@
-image: dtur3/r3-gamepad:latest
+image: dtur3/r3-teleop:latest
 manifests:
   -
-    image: dtur3/r3-gamepad:arm
+    image: dtur3/r3-teleop:arm
     platform:
       architecture: arm
       os: linux
   -
-    image: dtur3/r3-gamepad:amd64
+    image: dtur3/r3-teleop:amd64
     platform:
       architecture: amd64
       os: linux
