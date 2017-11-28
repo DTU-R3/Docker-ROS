@@ -1,0 +1,6 @@
+<launch>
+	<node name="mqtt_bridge" pkg="mqtt_bridge" type="mqtt_bridge_node.py" output="screen">
+		<rosparam command="delete" param="" />
+		<rosparam command="load" file="/root/r3-got_params.yaml" />
+	</node>
+</launch>

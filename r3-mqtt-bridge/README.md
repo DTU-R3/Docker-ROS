@@ -17,32 +17,71 @@ sudo apt install mosquitto-clients
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--net ros_network -p 1883:1883 --name mosquitto eclipse-mosquitto
 
+# ROS <-> MQTT (String)
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	-v $(pwd):/root \
 	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
 	--env ROS_HOSTNAME=mqtt_bridge --name mqtt_bridge dtur3/r3-mqtt-bridge \
 	roslaunch /root/r3-demo.launch
 
-# From ROS to MQTT:
+## From ROS to MQTT (String)
+mosquitto_sub -t '/#' -v
+
+sudo docker run -it --rm \
+	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	dtur3/r3-tutorials \
+	rostopic pub /chatter std_msgs/String "data: 'Hello'"
+
 sudo docker run -it --rm \
 	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
 	--env ROS_HOSTNAME=talker --name talker dtur3/r3-tutorials \
 	rosrun roscpp_tutorials talker
 
-mosquitto_sub -t '/#' -v
-
-# From MQTT to ROS
+## From MQTT to ROS (String)
 sudo docker run -it --rm \
 	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
 	dtur3/r3-tutorials \
 	rostopic echo /test
 
+mosquitto_pub -t '/test' -m '{"data": "Hello World!"}' -d
+
+# ROS <-> MQTT (another ROS type)
+sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
+	-v $(pwd):/root \
+	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--env ROS_HOSTNAME=mqtt_bridge --name mqtt_bridge dtur3/r3-mqtt-bridge \
+	roslaunch /root/r3-got.launch
+
+# From ROS to MQTT (another ROS type)
+mosquitto_sub -t '/#' -v
+
 sudo docker run -it --rm \
 	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
 	dtur3/r3-tutorials \
-	rostopic pub /test std_msgs/String "data: 'hello'"
+	rostopic pub /gpstest sensor_msgs/NavSatFix "
+header: 
+  seq: 1
+  stamp: 
+    secs: 0
+    nsecs: 0
+  frame_id: ''
+status: 
+  status: 0
+  service: 0
+latitude: 0.0
+longitude: 0.0
+altitude: 0.0
+position_covariance: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+position_covariance_type: 0
+"
 
-mosquitto_pub -t '/test' -m '{"data": "Hello World!"}' -d
+# From MQTT to ROS (another ROS type)
+sudo docker run -it --rm \
+	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	dtur3/r3-tutorials \
+	rostopic echo /gpstest2
+
+mosquitto_pub -t '/gpstest2' -m '{"status": {"status": 0, "service": 0}, "altitude": 0.0, "longitude": 0.0, "position_covariance": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "header": {"stamp": {"secs": 0, "nsecs": 0}, "frame_id": "", "seq": 1}, "latitude": 0.0, "position_covariance_type": 0}' -d
 ```
 
 ## Development
