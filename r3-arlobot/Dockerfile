@@ -18,7 +18,7 @@ RUN rm -rf /var/lib/apt/lists/
 
 RUN mkdir -p ~/catkin_ws/src/ && \
 	cd ~/catkin_ws/src/ && \
-	git clone https://github.com/DTU-R3/Arlobot.git -b dtu-r3/test
+	git clone https://github.com/DTU-R3/Arlobot.git -b dtu-r3/cmd_vel
 
 RUN /bin/bash -c " \
 	echo 'source /opt/ros/kinetic/setup.bash' >> ~/.bashrc && \
