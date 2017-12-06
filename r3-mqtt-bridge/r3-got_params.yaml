@@ -10,9 +10,9 @@ deserializer: json:loads
 bridge:
   - factory: mqtt_bridge.bridge:MqttToRosBridge
     msg_type: sensor_msgs.msg:NavSatFix
-    topic_from: /gpstest2
-    topic_to: /gpstest2
-  - factory: mqtt_bridge.bridge:RosToMqttBridge
+    topic_from: /GamesOnTrack/R232/41265
+    topic_to: /waypoint/left_sensor
+  - factory: mqtt_bridge.bridge:MqttToRosBridge
     msg_type: sensor_msgs.msg:NavSatFix
-    topic_from: /gpstest
-    topic_to: /gpstest
+    topic_from: /GamesOnTrack/R232/41267
+    topic_to: /waypoint/right_sensor
