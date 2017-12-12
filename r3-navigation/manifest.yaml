@@ -1,0 +1,12 @@
+image: dtur3/r3-navigation:latest
+manifests:
+  -
+    image: dtur3/r3-navigation:arm
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: dtur3/r3-navigation:amd64
+    platform:
+      architecture: amd64
+      os: linux
