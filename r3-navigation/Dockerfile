@@ -14,6 +14,8 @@ RUN apt install -y \
 		ros-kinetic-yocs-cmd-vel-mux \
 		ros-kinetic-yocs-velocity-smoother
 
+RUN apt install -y python-pip
+
 RUN rm -rf /var/lib/apt/lists/
 
 RUN pip install \
