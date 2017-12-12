@@ -31,7 +31,7 @@ elif [[ $arch =~ ^amd64 ]]; then arch="amd64";
 else echo "Unsupported architecture" >&2; exit 1; fi
 echo "Architecture: $arch"
 
-sudo docker tag dtur3/r3-navigation dtur3/r3-arlobot:$arch
+sudo docker tag dtur3/r3-navigation dtur3/r3-navigation:$arch
 sudo docker push dtur3/r3-navigation:$arch
 
 #push manifest - method while waiting for https://github.com/docker/cli/pull/138

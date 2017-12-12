@@ -14,7 +14,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--privileged -v /dev:/devhost \
 	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
 	--env ROS_HOSTNAME=arlobot --name arlobot dtur3/r3-arlobot \
-	bash -c 'rosparam set /arlobot/port /devhost/serial/by-id/usb-Parallax_Propeller_Activity_Board_WX_WX1OI6AQ-if00-port0 && \
+	bash -c 'rosparam set /arlobot/port /devhost/serial/by-id/usb-Parallax_Propeller_Activity_Board_WX_*-if00-port0 && \
 	roslaunch arlobot_bringup minimal.launch --screen'
 ```
 
