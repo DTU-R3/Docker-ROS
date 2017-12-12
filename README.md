@@ -24,7 +24,13 @@ sudo docker network inspect ros_network
 Instead of fetching them from Docker Hub:
 
 ```sh
-sudo ./build.sh
+sudo ./docker-build.sh
+```
+
+To push the builds to Docker Hub:
+```sh
+sudo ./docker-push.sh.sh
+sudo ./docker-manifest.sh
 ```
 
 ## Run ROS server and master
@@ -44,6 +50,7 @@ sudo docker restart ros_master
 sudo docker exec -it ros_master /bin/bash
 sudo docker run --rm weshigbee/manifest-tool inspect dtur3/r3-tutorials
 sudo docker images -a
+sudo docker system prune
 ```
 
 ## Test basic ROS communication
