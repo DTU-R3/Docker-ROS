@@ -13,18 +13,18 @@ sudo docker network create ros_network
 
 # Start two ROS nodes:
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=talker --name talker dtur3/r3-tutorials \
+	--network host --uts host \
+	--name talker dtur3/r3-tutorials \
 	rosrun roscpp_tutorials talker
 
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=listener --name listener dtur3/r3-tutorials \
+	--network host --uts host \
+	--name listener dtur3/r3-tutorials \
 	rosrun roscpp_tutorials listener
 
 # Another way to echo the data, using the rostopic command
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--network host --uts host \
 	dtur3/r3-tutorials \
 	rostopic echo /chatter
 ```

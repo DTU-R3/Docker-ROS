@@ -12,8 +12,18 @@ First, ensure that your ros_master is running.
 
 ```sh
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=keyboard_teleop --name keyboard_teleop dtur3/r3-teleop \
+	--network host --uts host \
+	dtur3/r3-teleop \
+	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --screen'
+```
+
+For a distant robot:
+
+```sh
+sudo docker run -it --rm \
+	--network host --uts host \
+	--env ROS_MASTER_URI=http://192.168.255.18:11311 \
+	dtur3/r3-teleop \
 	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --screen'
 ```
 
@@ -23,20 +33,31 @@ First, plug the Xbox Controller gamepad.
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--privileged -v /dev:/devhost \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=xbox360_teleop --name xbox360_teleop dtur3/r3-teleop \
-	bash -c 'rosparam set /joystick/dev "/devhost/input/by-id/usb-©Microsoft_Corporation_Controller_17ACDA2-joystick" && \
+	--network host --uts host \
+	--name xbox360_teleop dtur3/r3-teleop \
+	bash -c 'rosparam set /joystick/dev "/devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick" && \
 	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
 ```
 
-#### Alternative
-Expose only one USB port, but does not work if USB is disconnected/reconnected:
+For a distant robot:
+
+```sh
+sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
+	--privileged -v /dev:/devhost \
+	--network host --uts host \
+	--env ROS_MASTER_URI=http://192.168.255.18:11311 \
+	--name xbox360_teleop dtur3/r3-teleop \
+	bash -c 'rosparam set /joystick/dev "/devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick" && \
+	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
+```
+
+Alternative: Expose only one USB port, but does not work if USB is disconnected/reconnected:
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--device=/dev/input/js0 \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=xbox360_teleop --name xbox360_teleop dtur3/r3-teleop \
+	--network host --uts host \
+	--name xbox360_teleop dtur3/r3-teleop \
 	bash -c 'rosparam set /joystick/dev /dev/input/js0 && \
 	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
 ```

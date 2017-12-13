@@ -13,11 +13,6 @@ Tested with Raspbian 9 Stretch.
 
 ```sh
 curl -sSL https://get.docker.com | sh
-
-sudo docker network create ros_network
-
-# Additional commands:
-sudo docker network inspect ros_network
 ```
 
 ## Build DTU-R3 Docker images locally (optional)
@@ -37,8 +32,8 @@ sudo ./docker-manifest.sh
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
-	--net ros_network -p 11311:11311 \
-	--env ROS_HOSTNAME=ros_master --name ros_master ros:kinetic-ros-base-xenial \
+	--network host --uts host -p 11311:11311 \
+	--name ros_master ros:kinetic-ros-base-xenial \
 	roscore
 
 # Additional commands:

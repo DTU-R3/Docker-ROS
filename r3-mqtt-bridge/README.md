@@ -6,57 +6,63 @@
 See [main README](../README.md) and [MQTT Bridge documentation](https://github.com/groove-x/mqtt_bridge).
 
 ```sh
-#Start a ROS master; only if you have no existing master running:
-sudo docker run -it --rm --net ros_network --name mqtt_bridge dtur3/r3-tutorials roscore
-#Start a Docker nework; only if you do not have one already:
-sudo docker network create ros_network
-
 sudo apt install mosquitto-clients
 
 # If you do not have a Mosquitto MQTT server already
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
-	--net ros_network -p 1883:1883 --name mosquitto eclipse-mosquitto
+	--network host --uts host -p 1883:1883 \
+	--name mosquitto eclipse-mosquitto
+```
 
-# ROS <-> MQTT (String)
+### ROS <-> MQTT (String)
+
+```sh
+cd ./Docker-ROS/r3-mqtt-bridge/
+
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	-v $(pwd):/root \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=mqtt_bridge --name mqtt_bridge dtur3/r3-mqtt-bridge \
+	--network host --uts host \
+	--name mqtt_bridge dtur3/r3-mqtt-bridge \
 	roslaunch /root/r3-demo.launch
 
-## From ROS to MQTT (String)
+# From ROS to MQTT (String)
 mosquitto_sub -t '/#' -v
 
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--network host --uts host \
 	dtur3/r3-tutorials \
 	rostopic pub /chatter std_msgs/String "data: 'Hello'"
 
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=talker --name talker dtur3/r3-tutorials \
+	--network host --uts host \
+	dtur3/r3-tutorials \
 	rosrun roscpp_tutorials talker
 
-## From MQTT to ROS (String)
+# From MQTT to ROS (String)
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--network host --uts host \
 	dtur3/r3-tutorials \
 	rostopic echo /test
 
 mosquitto_pub -t '/test' -m '{"data": "Hello World!"}' -d
+```
 
-# ROS <-> MQTT (another ROS type)
+### ROS <-> MQTT (another ROS type)
+
+```sh
+cd ./Docker-ROS/r3-mqtt-bridge/
+
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	-v $(pwd):/root \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=mqtt_bridge --name mqtt_bridge dtur3/r3-mqtt-bridge \
+	--network host --uts host \
+	--name mqtt_bridge dtur3/r3-mqtt-bridge \
 	roslaunch /root/r3-got.launch
 
 # From ROS to MQTT (another ROS type)
 mosquitto_sub -t '/#' -v
 
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--network host --uts host \
 	dtur3/r3-tutorials \
 	rostopic pub /gpstest sensor_msgs/NavSatFix "
 header: 
@@ -77,7 +83,7 @@ position_covariance_type: 0
 
 # From MQTT to ROS (another ROS type)
 sudo docker run -it --rm \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
+	--network host --uts host \
 	dtur3/r3-tutorials \
 	rostopic echo /gpstest2
 

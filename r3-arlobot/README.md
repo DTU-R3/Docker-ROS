@@ -7,14 +7,14 @@
 ## Use
 See [main README](../README.md).
 
-First, ensure that your ros_master is running, and plug the Arlobot by USB.
+First, ensure that your `ros_master` is running, and plug the Arlobot by USB.
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--privileged -v /dev:/devhost \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=arlobot --name arlobot dtur3/r3-arlobot \
-	bash -c 'rosparam set /arlobot/port /devhost/serial/by-id/usb-Parallax_Propeller_Activity_Board_WX_WX1OI6AQ-if00-port0 && \
+	--network host --uts host \
+	--name arlobot dtur3/r3-arlobot \
+	bash -c 'rosparam set /arlobot/port /devhost/serial/by-id/usb-Parallax_Propeller_Activity_Board_* && \
 	roslaunch arlobot_bringup minimal.launch --screen'
 ```
 
@@ -24,8 +24,8 @@ Expose only one USB port, but does not work if USB is disconnected/reconnected:
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--device=/dev/ttyUSB0 \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=arlobot --name arlobot dtur3/r3-arlobot \
+	--network host --uts host \
+	--name arlobot dtur3/r3-arlobot \
 	bash -c 'rosparam set /arlobot/port /dev/ttyUSB0 && \
 	roslaunch arlobot_bringup minimal.launch --screen'
 ```

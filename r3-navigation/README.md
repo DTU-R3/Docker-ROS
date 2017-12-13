@@ -11,8 +11,8 @@ First, ensure that your ros_master is running, as well as [your Arlobot](../r3-a
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--privileged -v /dev:/devhost \
-	--net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--env ROS_HOSTNAME=navigation --name navigation dtur3/r3-navigation \
+	--network host --uts host \
+	--name navigation dtur3/r3-navigation \
 	roslaunch arlobot_waypoint waypoint.launch --screen
 ```
 
