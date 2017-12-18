@@ -20,9 +20,11 @@ sudo docker run -it --rm \
 For a distant robot:
 
 ```sh
+DISTANT_ROBOT=raspi-ros00
+
 sudo docker run -it --rm \
 	--network host --uts host \
-	--env ROS_MASTER_URI=http://192.168.255.18:11311 \
+	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
 	dtur3/r3-teleop \
 	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --screen'
 ```
@@ -42,10 +44,12 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 For a distant robot:
 
 ```sh
-sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
+DISTANT_ROBOT=raspi-ros00
+
+sudo docker run -it --rm \
 	--privileged -v /dev:/devhost \
 	--network host --uts host \
-	--env ROS_MASTER_URI=http://192.168.255.18:11311 \
+	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
 	--name xbox360_teleop dtur3/r3-teleop \
 	bash -c 'rosparam set /joystick/dev "`ls /devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick | tail -n 1`" && \
 	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
@@ -63,13 +67,18 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 ```
 
 ### Test
-See the list of topics, and echo output of the teleop commands sent on the topic:
+See the list of topics, and echo output of the teleop commands sent on the topics:
 
 ```sh
 sudo docker run -it --rm \
 	--network host --uts host \
 	dtur3/r3-teleop \
 	rostopic list
+
+sudo docker run -it --rm \
+	--network host --uts host \
+	dtur3/r3-teleop \
+	rostopic echo /joy
 
 sudo docker run -it --rm \
 	--network host --uts host \
@@ -97,14 +106,4 @@ sudo docker push dtur3/r3-teleop:$arch
 
 #push manifest - method while waiting for https://github.com/docker/cli/pull/138
 sudo docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd):/host weshigbee/manifest-tool push from-spec /host/manifest.yaml
-
-#Test the USB connection to the gamepad when manipulating the gamepad
-sudo docker run -it --rm --net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--name gamepad_listener --env ROS_HOSTNAME=gamepad_listener dtur3/r3-teleop \
-	rostopic echo joy
-
-#Test the output of the smoothed velocity when manipulating the gamepad
-sudo docker run -it --rm --net ros_network --env ROS_MASTER_URI=http://ros_master:11311 \
-	--name gamepad_listener --env ROS_HOSTNAME=gamepad_listener dtur3/r3-teleop \
-	rostopic echo /teleop_velocity_smoother/raw_cmd_vel
 ```
