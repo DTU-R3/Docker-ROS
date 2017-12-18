@@ -35,7 +35,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--privileged -v /dev:/devhost \
 	--network host --uts host \
 	--name xbox360_teleop dtur3/r3-teleop \
-	bash -c 'rosparam set /joystick/dev "/devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick" && \
+	bash -c 'rosparam set /joystick/dev "`ls /devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick | tail -n 1`" && \
 	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
 ```
 
@@ -47,7 +47,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--env ROS_MASTER_URI=http://192.168.255.18:11311 \
 	--name xbox360_teleop dtur3/r3-teleop \
-	bash -c 'rosparam set /joystick/dev "/devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick" && \
+	bash -c 'rosparam set /joystick/dev "`ls /devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick | tail -n 1`" && \
 	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
 ```
 
@@ -60,6 +60,21 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--name xbox360_teleop dtur3/r3-teleop \
 	bash -c 'rosparam set /joystick/dev /dev/input/js0 && \
 	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
+```
+
+### Test
+See the list of topics, and echo output of the teleop commands sent on the topic:
+
+```sh
+sudo docker run -it --rm \
+	--network host --uts host \
+	dtur3/r3-teleop \
+	rostopic list
+
+sudo docker run -it --rm \
+	--network host --uts host \
+	dtur3/r3-teleop \
+	rostopic echo /teleop_velocity_smoother/raw_cmd_vel
 ```
 
 ## Development
