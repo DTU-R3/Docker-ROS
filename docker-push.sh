@@ -6,9 +6,6 @@ elif [[ $arch =~ ^amd64 ]]; then arch="amd64";
 else echo "Unsupported architecture" >&2; exit 1; fi
 echo "Architecture: $arch"
 
-sudo docker tag dtur3/r3-base dtur3/r3-base:$arch
-sudo docker push dtur3/r3-base:$arch
-
 sudo docker tag dtur3/r3-tutorials dtur3/r3-tutorials:$arch
 sudo docker push dtur3/r3-tutorials:$arch
 
