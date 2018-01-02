@@ -95,7 +95,7 @@ rqt_image_view
 
 ### More documentation
 
-https://github.com/UbiquityRobotics/raspicam_node/blob/indigo/README.md#running-the-node
+https://github.com/UbiquityRobotics/raspicam_node/blob/kinetic/README.md#running-the-node
 
 
 ## Development

@@ -4,15 +4,15 @@ RUN apt update && \
 	apt upgrade -y
 
 RUN apt install -y \
-		python-serial \
-		ros-kinetic-cv-bridge \
-		ros-kinetic-move-base-msgs \
-		ros-kinetic-nodelet \
-		ros-kinetic-robot-state-publisher \
-		ros-kinetic-tf \
-		ros-kinetic-xacro \
-		ros-kinetic-yocs-cmd-vel-mux \
-		ros-kinetic-yocs-velocity-smoother
+	python-serial \
+	ros-kinetic-cv-bridge \
+	ros-kinetic-move-base-msgs \
+	ros-kinetic-nodelet \
+	ros-kinetic-robot-state-publisher \
+	ros-kinetic-tf \
+	ros-kinetic-xacro \
+	ros-kinetic-yocs-cmd-vel-mux \
+	ros-kinetic-yocs-velocity-smoother
 
 RUN apt install -y python-pip
 
