@@ -1,0 +1,7 @@
+image: dtur3/r3-raspicam:latest
+manifests:
+  -
+    image: dtur3/r3-raspicam:arm
+    platform:
+      architecture: arm
+      os: linux

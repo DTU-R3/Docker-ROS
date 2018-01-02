@@ -20,3 +20,6 @@ sudo docker push dtur3/r3-mqtt-bridge:$arch
 
 sudo docker tag dtur3/r3-navigation dtur3/r3-navigation:$arch
 sudo docker push dtur3/r3-navigation:$arch
+
+sudo docker tag dtur3/r3-raspicam dtur3/r3-raspicam:$arch
+sudo docker push dtur3/r3-raspicam:$arch
