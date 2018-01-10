@@ -60,13 +60,9 @@ See [ArloBot](./r3-arlobot/README.md).
 
 See [teleop](./r3-teleop/README.md).
 
-## Run remote-control (keyboard, joystick)
-
-See [teleop](./r3-teleop/README.md).
-
 ## Run waypoint navigation
 
-* See [navigation](./r3-navigation/README.md).
+See [navigation](./r3-navigation/README.md).
 
 ### Navigation requires a positioning system:
 
