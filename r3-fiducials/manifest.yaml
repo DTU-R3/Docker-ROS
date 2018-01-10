@@ -1,0 +1,12 @@
+image: dtur3/r3-fiducials:latest
+manifests:
+  -
+    image: dtur3/r3-fiducials:arm
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: dtur3/r3-fiducials:amd64
+    platform:
+      architecture: amd64
+      os: linux
