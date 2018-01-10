@@ -26,7 +26,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	roslaunch raspicam_node camerav2_410x308_30fps.launch --screen
 ```
 
-Examples of other default camera settings: 
+Examples of other camera settings available in `raspicam_node` package: 
 
 ```sh
 sudo docker run -it --rm \
@@ -46,12 +46,12 @@ Example of other custom camera settings:
 
 ```sh
 cd ./Docker-ROS/r3-raspicam/
-sudo docker run -it --rm \
+sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	-v $(pwd):/root \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
-	dtur3/r3-raspicam \
-	roslaunch raspicam_node /root/camerav2_410x308_15fps.launch --screen
+	--name raspicam dtur3/r3-raspicam \
+	roslaunch /root/camerav2_410x308_15fps.launch --screen
 ```
 
 ### Test
