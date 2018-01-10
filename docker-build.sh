@@ -6,3 +6,4 @@ docker build --tag dtur3/r3-teleop ./r3-teleop/
 docker build --tag dtur3/r3-mqtt-bridge ./r3-mqtt-bridge/
 docker build --tag dtur3/r3-navigation ./r3-navigation/
 docker build --tag dtur3/r3-raspicam ./r3-raspicam/
+docker build --tag dtur3/r3-fiducials ./r3-fiducials/
