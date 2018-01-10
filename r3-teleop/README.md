@@ -55,7 +55,7 @@ sudo docker run -it --rm \
 	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
 ```
 
-Alternative: Expose only one USB port, but does not work if USB is disconnected/reconnected:
+Alternative: Expose only one USB port, but might not work if USB is disconnected/reconnected:
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \

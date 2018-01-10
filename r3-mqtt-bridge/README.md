@@ -25,7 +25,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--name mqtt_bridge dtur3/r3-mqtt-bridge \
 	roslaunch /root/r3-demo.launch
 
-# From ROS to MQTT (String)
+# Test from ROS to MQTT (String)
 mosquitto_sub -t '/#' -v
 
 sudo docker run -it --rm \
@@ -38,7 +38,7 @@ sudo docker run -it --rm \
 	dtur3/r3-tutorials \
 	rosrun roscpp_tutorials talker
 
-# From MQTT to ROS (String)
+# Test from MQTT to ROS (String)
 sudo docker run -it --rm \
 	--network host --uts host \
 	dtur3/r3-tutorials \
@@ -49,6 +49,9 @@ mosquitto_pub -t '/test' -m '{"data": "Hello World!"}' -d
 
 ### ROS <-> MQTT (another ROS type)
 
+This is for instance what is needed to receive position information from [Games on Track](http://www.gamesontrack.com/) ultrasound indoor positioning.
+Edit a copy of [r3-got.launch](./r3-got.launch) with the proper sensor IDs.
+
 ```sh
 cd ./Docker-ROS/r3-mqtt-bridge/
 
@@ -58,7 +61,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--name mqtt_bridge dtur3/r3-mqtt-bridge \
 	roslaunch /root/r3-got.launch
 
-# From ROS to MQTT (another ROS type)
+# Test from ROS to MQTT (another ROS type)
 mosquitto_sub -t '/#' -v
 
 sudo docker run -it --rm \
@@ -81,7 +84,7 @@ position_covariance: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 position_covariance_type: 0
 "
 
-# From MQTT to ROS (another ROS type)
+# Test from MQTT to ROS (another ROS type)
 sudo docker run -it --rm \
 	--network host --uts host \
 	dtur3/r3-tutorials \

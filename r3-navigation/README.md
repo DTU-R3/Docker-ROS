@@ -8,9 +8,12 @@ See [main README](../README.md).
 
 First, ensure that your ros_master is running, as well as [your Arlobot](../r3-arlobot/).
 
+Navigation requires a positioning system:
+* See [MQTT bridge](../r3-mqtt-bridge/README.md) to receive position information from [Games on Track](http://www.gamesontrack.com/) ultrasound indoor positioning.
+* See [Fiducials](../r3-fiducials/README.md) for 2D-code SLAM “simultaneous localization and mapping” from a camera.
+
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
-	--privileged -v /dev:/devhost \
 	--network host --uts host \
 	--name navigation dtur3/r3-navigation \
 	roslaunch arlobot_waypoint waypoint.launch --screen

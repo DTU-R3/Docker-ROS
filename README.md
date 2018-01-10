@@ -1,8 +1,8 @@
 # DTU-R3: Docker + ROS
 DTU-R3 “Remote Reality Robot” Docker images based on ROS “Robot Operating System”.
 
-Made for Raspberry Pi 3 (ARMv8-A).
-Tested with Raspbian 9 Stretch.
+Made for ARMv8 (Raspberry Pi 3) and AMD64 architectures.
+Tested respectively with Raspbian 9 Stretch, and Ubuntu 16.04 Xenial Xerus.
 
 * Based on https://hub.docker.com/_/ros/ ros:kinetic-ros-base-xenial
 	* http://wiki.ros.org/docker/Tutorials/Docker
@@ -24,7 +24,7 @@ sudo ./docker-build.sh
 
 To push the builds to Docker Hub:
 ```sh
-sudo ./docker-push.sh.sh
+sudo ./docker-push.sh
 sudo ./docker-manifest.sh
 ```
 
@@ -56,3 +56,20 @@ See [tutorials](./r3-tutorials/README.md).
 
 See [ArloBot](./r3-arlobot/README.md).
 
+## Run remote-control (keyboard, joystick)
+
+See [teleop](./r3-teleop/README.md).
+
+## Run remote-control (keyboard, joystick)
+
+See [teleop](./r3-teleop/README.md).
+
+## Run waypoint navigation
+
+* See [navigation](./r3-navigation/README.md).
+
+### Navigation requires a positioning system:
+
+* See [MQTT bridge](./r3-mqtt-bridge/README.md) to receive position information from [Games on Track](http://www.gamesontrack.com/) ultrasound indoor positioning.
+* See [Fiducials](./r3-fiducials/README.md) for 2D-code SLAM “simultaneous localization and mapping” from a camera.
+	* See [RaspiCam](./r3-raspicam/README.md) to expose a Raspberry Pi camera to ROS.

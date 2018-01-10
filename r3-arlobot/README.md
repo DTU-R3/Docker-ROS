@@ -14,12 +14,12 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--privileged -v /dev:/devhost \
 	--network host --uts host \
 	--name arlobot dtur3/r3-arlobot \
-	bash -c 'rosparam set /arlobot/port /devhost/serial/by-id/usb-Parallax_Propeller_Activity_Board_* && \
+	bash -c 'rosparam set /arlobot/port "`ls /devhost/serial/by-id/usb-Parallax_Propeller_Activity_Board_* | tail -n 1`" && \
 	roslaunch arlobot_bringup minimal.launch --screen'
 ```
 
 ### Alternative
-Expose only one USB port, but does not work if USB is disconnected/reconnected:
+Expose only one USB port, but might not work if USB is disconnected/reconnected:
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \

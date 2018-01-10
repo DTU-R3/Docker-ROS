@@ -6,13 +6,13 @@
 * Sources https://github.com/DTU-R3/Docker-ROS/blob/master/r3-fiducials/
 
 ## Use
-See [main README](../README.md).
+See [main README](../README.md)
 
-First, ensure that your ros_master is running, as well as [your Arlobot](../r3-arlobot/).
-
-Generate some Fiducial markers: 
+Start by printing some Fiducial markers and position them in the environment:
 
 ```sh
+cd ./Docker-ROS/r3-fiducials/
+
 sudo docker run -it --rm \
 	-v $(pwd):/root \
 	dtur3/r3-fiducials \
@@ -29,6 +29,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--name fiducials_detect dtur3/r3-fiducials \
 	roslaunch aruco_detect aruco_detect.launch --screen
 ```
+
 
 2) `fiducial_slam`: Builds the map and makes an estimate of the robot's position:
 
