@@ -51,7 +51,20 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
 	--name raspicam dtur3/r3-raspicam \
-	roslaunch /root/camerav2_410x308_15fps.launch --screen
+	roslaunch /root/camerav2_410x308_10fps.launch --screen
+```
+
+Example with overriding settings:
+
+```sh
+#Suggested setting for Fiducials
+cd ./Docker-ROS/r3-raspicam/
+sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
+	-v $(pwd):/root \
+	--device=/dev/vcsm --device=/dev/vchiq \
+	--network host --uts host \
+	--name raspicam dtur3/r3-raspicam \
+	roslaunch /root/camerav2_1280x960_5fps framerate:=1 --screen
 ```
 
 ### Test
