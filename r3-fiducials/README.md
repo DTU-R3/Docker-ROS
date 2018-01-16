@@ -19,15 +19,19 @@ sudo docker run -it --rm \
 	rosrun aruco_detect create_markers.py 100 112 /root/fiducials.pdf
 ```
 
-Two nodes are needed: `fiducials_detect` and `fiducial_slam`.
+The Fiducial marker number 100 is already in [`map.txt`](./map.txt) and used as the origine (coordinate 0).
 
-1) `fiducials_detect`: Detection of the fiducials:
+A camera is then needed, such as the [Raspicam](../r3-raspicam/README.md), with the suggested settings for Fiducials,
+
+Two nodes will be running: `aruco_detect` and `fiducial_slam`.
+
+1) `aruco_detect`: Detection of the fiducials:
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
-	--name fiducials_detect dtur3/r3-fiducials \
-	roslaunch aruco_detect aruco_detect.launch --screen
+	--name aruco_detect dtur3/r3-fiducials \
+	roslaunch aruco_detect aruco_detect.launch camera:=/raspicam_node --screen
 ```
 
 
@@ -35,9 +39,22 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
+	-v $(pwd):/root/.ros/slam/ \
 	--network host --uts host \
 	--name fiducials_slam dtur3/r3-fiducials \
 	roslaunch fiducial_slam fiducial_slam.launch --screen
+```
+
+## Interface
+
+The detected Fiducials are available in the `/fiducial_map` topic,
+and their coordinates are relative to the Fiducial at coordinate 0.
+
+```sh
+sudo docker run -it --rm \
+	--network host --uts host \
+	ros:kinetic-ros-base-xenial \
+	rostopic echo /fiducial_map
 ```
 
 ## Development
