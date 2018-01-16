@@ -31,7 +31,7 @@ Two nodes will be running: `aruco_detect` and `fiducial_slam`.
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name aruco_detect dtur3/r3-fiducials \
-	roslaunch aruco_detect aruco_detect.launch camera:=/raspicam_node --screen
+	roslaunch aruco_detect aruco_detect.launch camera:=/raspicam_node --wait --screen
 ```
 
 
@@ -42,7 +42,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	-v $(pwd):/root/.ros/slam/ \
 	--network host --uts host \
 	--name fiducials_slam dtur3/r3-fiducials \
-	roslaunch fiducial_slam fiducial_slam.launch --screen
+	roslaunch fiducial_slam fiducial_slam.launch --wait --screen
 ```
 
 ## Interface

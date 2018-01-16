@@ -23,7 +23,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	-v $(pwd):/root \
 	--network host --uts host \
 	--name mqtt_bridge dtur3/r3-mqtt-bridge \
-	roslaunch /root/r3-demo.launch
+	roslaunch /root/r3-demo.launch --wait --screen
 
 # Test from ROS to MQTT (String)
 mosquitto_sub -t '/#' -v
@@ -59,7 +59,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	-v $(pwd):/root \
 	--network host --uts host \
 	--name mqtt_bridge dtur3/r3-mqtt-bridge \
-	roslaunch /root/r3-got.launch
+	roslaunch /root/r3-got.launch --wait --screen
 
 # Test from ROS to MQTT (another ROS type)
 mosquitto_sub -t '/#' -v

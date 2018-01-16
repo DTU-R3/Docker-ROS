@@ -15,7 +15,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name arlobot dtur3/r3-arlobot \
 	bash -c 'rosparam set /arlobot/port "`ls /devhost/serial/by-id/usb-Parallax_Propeller_Activity_Board_* | tail -n 1`" && \
-	roslaunch arlobot_bringup minimal.launch --screen'
+	roslaunch arlobot_bringup minimal.launch --wait --screen'
 ```
 
 ### Alternative
@@ -27,7 +27,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name arlobot dtur3/r3-arlobot \
 	bash -c 'rosparam set /arlobot/port /dev/ttyUSB0 && \
-	roslaunch arlobot_bringup minimal.launch --screen'
+	roslaunch arlobot_bringup minimal.launch --wait --screen'
 ```
 
 ## Development

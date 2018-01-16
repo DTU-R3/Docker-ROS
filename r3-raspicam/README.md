@@ -23,7 +23,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
 	--name raspicam dtur3/r3-raspicam \
-	roslaunch raspicam_node camerav2_410x308_30fps.launch --screen
+	roslaunch raspicam_node camerav2_410x308_30fps.launch --wait --screen
 ```
 
 Examples of other camera settings available in `raspicam_node` package: 
@@ -33,13 +33,13 @@ sudo docker run -it --rm \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
 	dtur3/r3-raspicam \
-	roslaunch raspicam_node camerav2_1280x960.launch --screen
+	roslaunch raspicam_node camerav2_1280x960.launch --wait --screen
 
 sudo docker run -it --rm \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
 	dtur3/r3-raspicam \
-	roslaunch raspicam_node camerav2_1280x960_10fps.launch --screen
+	roslaunch raspicam_node camerav2_1280x960_10fps.launch --wait --screen
 ```
 
 Example of other custom camera settings: 
@@ -51,7 +51,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
 	--name raspicam dtur3/r3-raspicam \
-	roslaunch /root/camerav2_410x308_10fps.launch --screen
+	roslaunch /root/camerav2_410x308_10fps.launch --wait --screen
 ```
 
 Example with overriding settings:
@@ -64,7 +64,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
 	--name raspicam dtur3/r3-raspicam \
-	roslaunch /root/camerav2_1280x960_5fps.launch framerate:=1 --screen
+	roslaunch /root/camerav2_1280x960_5fps.launch framerate:=1 --wait --screen
 ```
 
 ### Test
@@ -88,7 +88,7 @@ sudo docker run -it --rm \
 	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
 	ros:kinetic-perception-xenial \
 	rosrun image_view extract_images image:=/raspicam_node/image _image_transport:=compressed \
-	_filename_format:='/host/raspicam_%04i.jpg' _sec_per_frame:=1 --screen
+	_filename_format:='/host/raspicam_%04i.jpg' _sec_per_frame:=1
 ```
 
 [Grab a video](http://wiki.ros.org/image_view#image_view.2BAC8-diamondback.Tools) from a remote computer:
@@ -102,7 +102,7 @@ sudo docker run -it --rm \
 	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
 	ros:kinetic-perception-xenial \
 	rosrun image_view video_recorder image:=/raspicam_node/image _image_transport:=compressed \
-	_fps:=30 _filename:='/host/raspicam.avi' --screen
+	_fps:=30 _filename:='/host/raspicam.avi'
 ```
 
 [Display the camera](http://wiki.ros.org/rqt_image_view) from a remote Ubuntu desktop computer:

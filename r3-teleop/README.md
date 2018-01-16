@@ -14,7 +14,7 @@ First, ensure that your ros_master is running.
 sudo docker run -it --rm \
 	--network host --uts host \
 	dtur3/r3-teleop \
-	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --screen'
+	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --wait --screen'
 ```
 
 For a distant robot:
@@ -26,7 +26,7 @@ sudo docker run -it --rm \
 	--network host --uts host \
 	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
 	dtur3/r3-teleop \
-	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --screen'
+	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --wait --screen'
 ```
 
 ### Gamepad
@@ -38,7 +38,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name xbox360_teleop dtur3/r3-teleop \
 	bash -c 'rosparam set /joystick/dev "`ls /devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick | tail -n 1`" && \
-	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
+	roslaunch turtlebot_teleop xbox360_teleop.launch --wait --screen'
 ```
 
 For a distant robot:
@@ -52,7 +52,7 @@ sudo docker run -it --rm \
 	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
 	--name xbox360_teleop dtur3/r3-teleop \
 	bash -c 'rosparam set /joystick/dev "`ls /devhost/input/by-id/usb-©Microsoft_Corporation_Controller_*-joystick | tail -n 1`" && \
-	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
+	roslaunch turtlebot_teleop xbox360_teleop.launch --wait --screen'
 ```
 
 Alternative: Expose only one USB port, but might not work if USB is disconnected/reconnected:
@@ -63,7 +63,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name xbox360_teleop dtur3/r3-teleop \
 	bash -c 'rosparam set /joystick/dev /dev/input/js0 && \
-	roslaunch turtlebot_teleop xbox360_teleop.launch --screen'
+	roslaunch turtlebot_teleop xbox360_teleop.launch --wait --screen'
 ```
 
 ### Test
