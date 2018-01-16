@@ -3,17 +3,6 @@ FROM ros:kinetic-ros-base-xenial
 RUN apt update && \
 	apt upgrade -y
 
-RUN apt install -y \
-	python-serial \
-	ros-kinetic-cv-bridge \
-	ros-kinetic-move-base-msgs \
-	ros-kinetic-nodelet \
-	ros-kinetic-robot-state-publisher \
-	ros-kinetic-tf \
-	ros-kinetic-xacro \
-	ros-kinetic-yocs-cmd-vel-mux \
-	ros-kinetic-yocs-velocity-smoother
-
 RUN apt install -y python-pip
 
 RUN rm -rf /var/lib/apt/lists/
@@ -23,7 +12,7 @@ RUN pip install \
 
 RUN mkdir -p ~/catkin_ws/src/ && \
 	cd ~/catkin_ws/src/ && \
-	git clone https://github.com/DTU-R3/Arlobot.git -b dtu-r3/cmd_vel
+	git clone https://github.com/DTU-R3/ROS-waypoint-navigation.git
 
 RUN /bin/bash -c " \
 	echo 'source /opt/ros/kinetic/setup.bash' >> ~/.bashrc && \
@@ -33,7 +22,5 @@ RUN /bin/bash -c " \
 	sed -i '/exec/ i source ~/catkin_ws/devel/setup.bash' /ros_entrypoint.sh && \
 	echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc && \
 	source ~/catkin_ws/devel/setup.bash && \
-	mkdir -p ~/.arlobot && \
-	ln -fs ~/catkin_ws/src/Arlobot/src/arlobot/arlobot_bringup/param/arlobot.yaml ~/.arlobot/ && \
 	echo Done. \
 	"

@@ -16,7 +16,7 @@ Navigation requires a positioning system:
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name navigation dtur3/r3-navigation \
-	roslaunch arlobot_waypoint waypoint.launch --screen
+	roslaunch waypoint_nav waypoint.launch --screen
 ```
 
 ## Development
