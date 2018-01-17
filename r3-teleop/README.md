@@ -14,7 +14,7 @@ First, ensure that your ros_master is running.
 sudo docker run -it --rm \
 	--network host --uts host \
 	dtur3/r3-teleop \
-	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --wait --screen'
+	roslaunch turtlebot_teleop keyboard_teleop.launch --wait --screen
 ```
 
 For a distant robot:
@@ -26,7 +26,7 @@ sudo docker run -it --rm \
 	--network host --uts host \
 	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
 	dtur3/r3-teleop \
-	bash -c 'roslaunch turtlebot_teleop keyboard_teleop.launch --wait --screen'
+	roslaunch turtlebot_teleop keyboard_teleop.launch --wait --screen
 ```
 
 ### Gamepad

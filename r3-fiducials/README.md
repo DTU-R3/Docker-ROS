@@ -38,6 +38,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 2) `fiducial_slam`: Builds the map and makes an estimate of the robot's position:
 
 ```sh
+cd ./Docker-ROS/r3-fiducials/
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	-v $(pwd):/root/.ros/slam/ \
 	--network host --uts host \
@@ -53,8 +54,19 @@ and their coordinates are relative to the Fiducial at coordinate 0.
 ```sh
 sudo docker run -it --rm \
 	--network host --uts host \
-	ros:kinetic-ros-base-xenial \
+	dtur3/r3-fiducials \
 	rostopic echo /fiducial_map
+```
+
+## Visualisation
+
+From a desktop computer running ROS:
+
+```sh
+DISTANT_ROBOT=raspi-ros00
+
+export ROS_MASTER_URI=http://$DISTANT_ROBOT:11311
+roslaunch fiducial_slam fiducial_rviz.launch
 ```
 
 ## Development
