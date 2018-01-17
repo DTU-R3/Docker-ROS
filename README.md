@@ -44,8 +44,12 @@ sudo docker rm ros_master
 sudo docker restart ros_master
 sudo docker exec -it ros_master /bin/bash
 sudo docker run --rm weshigbee/manifest-tool inspect dtur3/r3-tutorials
+# Cleaning
 sudo docker images -a
 sudo docker system prune
+sudo docker system prune -a
+# Updating
+docker pull ros:kinetic-ros-base-xenial
 ```
 
 ## Test basic ROS communication

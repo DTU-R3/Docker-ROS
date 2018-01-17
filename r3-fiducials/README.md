@@ -8,7 +8,7 @@
 ## Use
 See [main README](../README.md)
 
-Start by printing some Fiducial markers and position them in the environment:
+Start by printing (at 100% scale) some Fiducial markers and position them in the environment:
 
 ```sh
 cd ./Docker-ROS/r3-fiducials/
