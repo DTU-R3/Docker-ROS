@@ -54,27 +54,27 @@ docker pull ros:kinetic-ros-base-xenial
 
 ## Test basic ROS communication
 
-See [tutorials](./r3-tutorials/README.md).
+See [tutorials](./r3-tutorials/).
 
 ## Run Parallax ArloBot
 
-See [ArloBot](./r3-arlobot/README.md).
+See [ArloBot](./r3-arlobot/).
 
 ## Run remote-control (keyboard, joystick)
 
-See [teleop](./r3-teleop/README.md).
+See [teleop](./r3-teleop/).
 
 ## Run waypoint navigation
 
-See [navigation](./r3-navigation/README.md).
+See [navigation](./r3-navigation/).
 
 ### Navigation requires a positioning system:
 
-* See [MQTT bridge](./r3-mqtt-bridge/README.md) to receive position information from [Games on Track](http://www.gamesontrack.com/) ultrasound indoor positioning.
-* See [Fiducials](./r3-fiducials/README.md) for 2D-code SLAM “simultaneous localization and mapping” from a camera.
-	* See [RaspiCam](./r3-raspicam/README.md) to expose a Raspberry Pi camera to ROS.
+* See [MQTT bridge](./r3-mqtt-bridge/) to receive position information from [Games on Track](http://www.gamesontrack.com/) ultrasound indoor positioning.
+* See [Fiducials](./r3-fiducials/) for 2D-code SLAM “simultaneous localization and mapping” from a camera.
+	* See [RaspiCam](./r3-raspicam/) to expose a Raspberry Pi camera to ROS.
 
 ## Visual programming
 
-* See [Node-RED](./r3-node-red/README.md).
-	* See [WS Bridge](./r3-ws-bridge/README.md) to expose a ROS to WebSocket bridge.
+* See [Node-RED](./r3-node-red/).
+	* See [WS Bridge](./r3-ws-bridge/) to expose a ROS to WebSocket bridge.

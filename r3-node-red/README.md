@@ -10,7 +10,7 @@ See [main README](../README.md).
 
 First, ensure that your `ros_master` is running.
 
-Then see [WS Bridge](../r3-ws-bridge/README.md) to start a ROS to WebSocket bridge.
+Then see [WS Bridge](../r3-ws-bridge/) to start a ROS to WebSocket bridge.
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \

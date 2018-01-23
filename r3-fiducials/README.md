@@ -6,7 +6,7 @@
 * Sources https://github.com/DTU-R3/Docker-ROS/blob/master/r3-fiducials/
 
 ## Use
-See [main README](../README.md)
+See [main README](../README)
 
 Start by printing (at 100% scale) some Fiducial markers and position them in the environment:
 
@@ -21,7 +21,7 @@ sudo docker run -it --rm \
 
 The Fiducial marker number 100 is already in [`map.txt`](./map.txt) and used as the origine (coordinate 0).
 
-A camera is then needed, such as the [Raspicam](../r3-raspicam/README.md), with the suggested settings for Fiducials,
+A camera is then needed, such as the [Raspicam](../r3-raspicam/), with the suggested settings for Fiducials,
 
 Two nodes will be running: `aruco_detect` and `fiducial_slam`.
 
