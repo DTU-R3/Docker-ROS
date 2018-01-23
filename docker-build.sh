@@ -9,3 +9,4 @@ docker build --tag dtur3/r3-navigation ./r3-navigation/
 docker build --tag dtur3/r3-raspicam ./r3-raspicam/
 docker build --tag dtur3/r3-fiducials ./r3-fiducials/
 docker build --tag dtur3/r3-ws-bridge ./r3-ws-bridge/
+docker build --tag dtur3/r3-node-red ./r3-node-red/

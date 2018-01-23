@@ -1,0 +1,12 @@
+image: dtur3/r3-arlobot:latest
+manifests:
+  -
+    image: dtur3/r3-arlobot:arm
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: dtur3/r3-arlobot:amd64
+    platform:
+      architecture: amd64
+      os: linux

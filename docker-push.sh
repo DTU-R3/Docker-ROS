@@ -29,3 +29,6 @@ sudo docker push dtur3/r3-fiducials:$arch
 
 sudo docker tag dtur3/r3-ws-bridge dtur3/r3-ws-bridge:$arch
 sudo docker push dtur3/r3-ws-bridge:$arch
+
+sudo docker tag dtur3/r3-node-red dtur3/r3-node-red:$arch
+sudo docker push dtur3/r3-node-red:$arch

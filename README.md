@@ -76,5 +76,5 @@ See [navigation](./r3-navigation/README.md).
 
 ## Visual programming
 
-* See Node-RED.
-	* See [WS Bridge](./r3-ws-bridge/README.md) to expose a WebSocket to ROS bridge.
+* See [Node-RED](./r3-node-red/README.md).
+	* See [WS Bridge](./r3-ws-bridge/README.md) to expose a ROS to WebSocket bridge.
