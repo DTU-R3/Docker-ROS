@@ -6,3 +6,4 @@ docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd)/r3-
 docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd)/r3-mqtt-bridge:/host weshigbee/manifest-tool push from-spec /host/manifest.yaml
 docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd)/r3-navigation:/host weshigbee/manifest-tool push from-spec /host/manifest.yaml
 docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd)/r3-raspicam:/host weshigbee/manifest-tool push from-spec /host/manifest.yaml
+docker run --rm -v ~/.docker/config.json:/root/.docker/config.json -v $(pwd)/r3-ws-bridge:/host weshigbee/manifest-tool push from-spec /host/manifest.yaml

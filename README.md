@@ -73,3 +73,8 @@ See [navigation](./r3-navigation/README.md).
 * See [MQTT bridge](./r3-mqtt-bridge/README.md) to receive position information from [Games on Track](http://www.gamesontrack.com/) ultrasound indoor positioning.
 * See [Fiducials](./r3-fiducials/README.md) for 2D-code SLAM “simultaneous localization and mapping” from a camera.
 	* See [RaspiCam](./r3-raspicam/README.md) to expose a Raspberry Pi camera to ROS.
+
+## Visual programming
+
+* See Node-RED.
+	* See [WS Bridge](./r3-ws-bridge/README.md) to expose a WebSocket to ROS bridge.

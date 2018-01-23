@@ -1,0 +1,12 @@
+image: dtur3/r3-ws-bridge:latest
+manifests:
+  -
+    image: dtur3/r3-ws-bridge:arm
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: dtur3/r3-ws-bridge:amd64
+    platform:
+      architecture: amd64
+      os: linux
