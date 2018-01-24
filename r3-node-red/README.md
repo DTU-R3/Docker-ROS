@@ -8,9 +8,15 @@
 ## Use
 See [main README](../README.md).
 
-First, ensure that your `ros_master` is running.
+See [WS Bridge](../r3-ws-bridge/) to start a ROS to WebSocket bridge.
+The bridge needs to be connected to the ROS master of the robot,
+but does not necessarily have to run on the robot itself.
 
-Then see [WS Bridge](../r3-ws-bridge/) to start a ROS to WebSocket bridge.
+It is possible to control multiple robots at the same time,
+with one WebSocket bridge per robot.
+
+The Node-RED software can run on a robot or anywhere else
+that has access to the WebSocket bridge.
 
 ```sh
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
