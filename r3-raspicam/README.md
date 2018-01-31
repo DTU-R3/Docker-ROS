@@ -64,7 +64,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
 	--name raspicam dtur3/r3-raspicam \
-	roslaunch /root/camerav2_1280x960_5fps.launch framerate:=1 --wait --screen
+	roslaunch /root/camerav2_1920x1080.launch framerate:=1 --wait --screen
 ```
 
 ### Test
