@@ -64,7 +64,7 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--device=/dev/vcsm --device=/dev/vchiq \
 	--network host --uts host \
 	--name raspicam dtur3/r3-raspicam \
-	roslaunch /root/camerav2_1280x960_5fps.launch framerate:=1 quality:=90 --wait --screen
+	roslaunch /root/camerav2_1640x1232_4fps.launch framerate:=1 quality:=90 --wait --screen
 ```
 
 ### Test
@@ -121,6 +121,13 @@ rqt_image_view
 
 https://github.com/UbiquityRobotics/raspicam_node/blob/kinetic/README.md#running-the-node
 
+If you need an uncompressed video feed, see https://discourse.ros.org/t/raspberry-pi-camera-node/1388/8
+
+```sh
+rosrun image_transport republish compressed in:=/raspicam_node/image raw out:=/raspicam_node/image
+```
+
+If you need to recalibrate the camera, see http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
 
 ## Development
 

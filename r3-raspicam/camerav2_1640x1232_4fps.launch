@@ -1,0 +1,17 @@
+<launch>
+	<arg name="framerate" default="4"/>
+	<arg name="quality" default="80"/>
+
+	<node type="raspicam_node" pkg="raspicam_node" name="raspicam_node" output="screen">
+		<param name="camera_frame_id" value="raspicam"/>
+
+		<param name="camera_info_url" value="file:///root/camerav2_1640x1232.yaml"/>
+		<param name="width" value="1640"/>
+		<param name="height" value="1232"/>
+		
+		<param name="exposure_mode" value="antishake"/>
+		<param name="framerate" value="$(arg framerate)"/>
+		<param name="quality" value="$(arg quality)"/>
+		<param name="shutter_speed" value="0"/>
+	</node>
+</launch>
