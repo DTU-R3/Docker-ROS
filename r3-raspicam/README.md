@@ -127,6 +127,8 @@ If you need an uncompressed video feed, see https://discourse.ros.org/t/raspberr
 rosrun image_transport republish compressed in:=/raspicam_node/image raw out:=/raspicam_node/image
 ```
 
+It is possible to rotate the lens manually to adjust the focus.
+
 If you need to recalibrate the camera, see http://wiki.ros.org/camera_calibration/Tutorials/MonocularCalibration
 
 ## Development
