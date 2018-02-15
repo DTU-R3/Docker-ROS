@@ -1,12 +1,12 @@
-image: dtur3/r3-arlobot:latest
+image: dtur3/r3-node-red:latest
 manifests:
   -
-    image: dtur3/r3-arlobot:arm
+    image: dtur3/r3-node-red:arm
     platform:
       architecture: arm
       os: linux
   -
-    image: dtur3/r3-arlobot:amd64
+    image: dtur3/r3-node-red:amd64
     platform:
       architecture: amd64
       os: linux
