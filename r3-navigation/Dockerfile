@@ -3,6 +3,9 @@ FROM ros:kinetic-ros-base-xenial
 RUN apt update && \
 	apt upgrade -y
 
+RUN apt install -y \
+	ros-kinetic-fiducial-msgs
+
 RUN apt install -y python-pip
 
 RUN rm -rf /var/lib/apt/lists/
@@ -12,7 +15,9 @@ RUN pip install \
 
 RUN mkdir -p ~/catkin_ws/src/ && \
 	cd ~/catkin_ws/src/ && \
-	git clone https://github.com/DTU-R3/ROS-waypoint-navigation.git
+	git clone https://github.com/DTU-R3/DTU-R3-ROS.git && \
+	mv ./DTU-R3-ROS/waypoint_nav ./ && \
+	rm -r ./DTU-R3-ROS/
 
 RUN /bin/bash -c " \
 	echo 'source /opt/ros/kinetic/setup.bash' >> ~/.bashrc && \
