@@ -4,14 +4,16 @@ RUN apt update && \
 	apt upgrade -y
 
 RUN apt install -y \
-	ros-kinetic-fiducial-msgs
+	ros-kinetic-fiducial-msgs \
+	ros-kinetic-tf2-geometry-msgs
 
 RUN apt install -y python-pip
 
 RUN rm -rf /var/lib/apt/lists/
 
 RUN pip install \
-	pyproj
+	pyproj \
+	pyquaternion
 
 RUN mkdir -p ~/catkin_ws/src/ && \
 	cd ~/catkin_ws/src/ && \
