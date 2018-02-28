@@ -32,3 +32,9 @@ sudo docker push dtur3/r3-ws-bridge:$arch
 
 sudo docker tag dtur3/r3-node-red dtur3/r3-node-red:$arch
 sudo docker push dtur3/r3-node-red:$arch
+
+sudo docker tag dtur3/r3-navigation dtur3/r3-navigation:$arch
+sudo docker push dtur3/r3-navigation:$arch
+
+sudo docker tag dtur3/r3-odometry-control dtur3/r3-odometry-control:$arch
+sudo docker push dtur3/r3-odometry-control:$arch

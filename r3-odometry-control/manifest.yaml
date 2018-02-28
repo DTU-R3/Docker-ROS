@@ -1,0 +1,12 @@
+image: dtur3/r3-odometry-control:latest
+manifests:
+  -
+    image: dtur3/r3-odometry-control:arm
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: dtur3/r3-odometry-control:amd64
+    platform:
+      architecture: amd64
+      os: linux

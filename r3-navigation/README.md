@@ -1,7 +1,9 @@
 # DTU-R3: Docker + ROS image for waypoint navigation
 * Based on https://hub.docker.com/_/ros/ ros:kinetic-ros-base-xenial
 * Images https://hub.docker.com/r/dtur3/r3-navigation/
-* Sources https://github.com/DTU-R3/Docker-ROS/blob/master/r3-navigation/
+* Sources:
+	* https://github.com/DTU-R3/Docker-ROS/blob/master/r3-navigation/
+	* https://github.com/DTU-R3/DTU-R3-ROS/tree/master/waypoint_nav
 
 ## Use
 See [main README](../README.md).
