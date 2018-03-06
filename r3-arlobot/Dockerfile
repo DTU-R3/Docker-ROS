@@ -30,8 +30,8 @@ RUN /bin/bash -c " \
 	source ~/catkin_ws/devel/setup.bash && \
 	mkdir -p ~/.arlobot && \
 	ln -fs ~/catkin_ws/src/Arlobot/src/arlobot/arlobot_bringup/param/arlobot.yaml ~/.arlobot/ && \
-	echo 'controlByPower: True' >> ~/.arlobot/ && \
-	echo 'acceleration: 0.1' >> ~/.arlobot/ && \
-	echo 'wheelRatio: 1.07' >> ~/.arlobot/ && \
+	echo 'controlByPower: True' >> ~/.arlobot/arlobot.yaml && \
+	echo 'acceleration: 0.1' >> ~/.arlobot/arlobot.yaml && \
+	echo 'wheelRatio: 1.07' >> ~/.arlobot/arlobot.yaml && \
 	echo Done. \
 	"
