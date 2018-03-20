@@ -29,7 +29,7 @@
         "node-red-node-base64": "*",
         "node-red-node-suncalc": "*",
         "node-red-node-random": "*",
-        "node-red-contrib-ros": "git://github.com/marvinferber/node-red-contrib-ros.git"
+        "node-red-contrib-ros": "https://github.com/DTU-R3/node-red-contrib-ros.git"
     },
     "engines": {
         "node": "8.*.*"
