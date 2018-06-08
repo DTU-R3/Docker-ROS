@@ -25,7 +25,7 @@ sudo docker run -it --rm \
 # Another way to echo the data, using the rostopic command
 sudo docker run -it --rm \
 	--network host --uts host \
-	dtur3/r3-tutorials \
+	ros:kinetic-ros-base-xenial \
 	rostopic echo /chatter
 ```
 

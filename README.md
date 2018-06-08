@@ -36,6 +36,12 @@ sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--name ros_master ros:kinetic-ros-base-xenial \
 	roscore
 
+# See the list of topics:
+sudo docker run -it --rm \
+	--network host --uts host \
+	ros:kinetic-ros-base-xenial \
+	rostopic list
+
 # Additional commands:
 sudo docker ps -a
 sudo docker logs -f ros_master

@@ -19,7 +19,12 @@ Navigation requires a positioning system:
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name navigation dtur3/r3-navigation \
-	roslaunch waypoint_nav encoder_waypoint.launch --wait --screen
+	roslaunch waypoint_nav fiducial_encoder_waypoint.launch --wait --screen
+
+sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
+	--network host --uts host \
+	--name navigation dtur3/r3-navigation \
+	roslaunch waypoint_nav odometry_control.launch --wait --screen
 ```
 
 ## Development

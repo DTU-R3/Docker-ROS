@@ -9,6 +9,7 @@ RUN apt install -y \
 RUN apt install -y --no-install-recommends \
 	inkscape \
 	poppler-utils \
-	ros-kinetic-fiducials
+	ros-kinetic-fiducials \
+	ros-kinetic-image-transport-plugins
 
 RUN rm -rf /var/lib/apt/lists/

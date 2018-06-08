@@ -30,12 +30,6 @@ docker push dtur3/r3-ws-bridge:$arch
 docker tag dtur3/r3-node-red dtur3/r3-node-red:$arch
 docker push dtur3/r3-node-red:$arch
 
-docker tag dtur3/r3-navigation dtur3/r3-navigation:$arch
-docker push dtur3/r3-navigation:$arch
-
-docker tag dtur3/r3-odometry-control dtur3/r3-odometry-control:$arch
-docker push dtur3/r3-odometry-control:$arch
-
 if [ "$arch" == 'arm' ]; then
 	docker tag dtur3/r3-raspicam dtur3/r3-raspicam:$arch
 	docker push dtur3/r3-raspicam:$arch
