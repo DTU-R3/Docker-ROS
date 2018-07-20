@@ -3,11 +3,11 @@ FROM ros:kinetic-ros-base-xenial
 RUN apt update && \
 	apt upgrade -y
 
+RUN apt install -y python-pip
+
 RUN apt install -y \
 	ros-kinetic-fiducial-msgs \
 	ros-kinetic-tf2-geometry-msgs
-
-RUN apt install -y python-pip
 
 RUN rm -rf /var/lib/apt/lists/
 
