@@ -20,4 +20,6 @@ docker build --tag dtur3/r3-node-red ./r3-node-red/
 
 if [ "$arch" == 'arm' ]; then
 	docker build --tag dtur3/r3-raspicam ./r3-raspicam/
+else
+	docker build --tag dtur3/r3-peerserver ./r3-peerserver/
 fi

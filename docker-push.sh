@@ -33,4 +33,6 @@ docker push dtur3/r3-node-red:$arch
 if [ "$arch" == 'arm' ]; then
 	docker tag dtur3/r3-raspicam dtur3/r3-raspicam:$arch
 	docker push dtur3/r3-raspicam:$arch
+else
+	docker push dtur3/r3-peerserver
 fi
