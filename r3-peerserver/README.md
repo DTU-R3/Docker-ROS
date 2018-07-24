@@ -1,4 +1,4 @@
-# DTU-R3: PeerServer: WebRTC signaling server for videoconference
+# DTU-R3: PeerServer: WebRTC signalling server for videoconference
 * Based on
 	* https://github.com/peers/peerjs-server
 * Images https://hub.docker.com/r/dtur3/r3-peerserver/
