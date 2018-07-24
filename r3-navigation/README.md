@@ -16,11 +16,13 @@ Navigation requires a positioning system:
 * See [Fiducials](../r3-fiducials/) for 2D-code SLAM “simultaneous localization and mapping” from a camera.
 
 ```sh
+# For basic odometry control such as "forward 1.5m"
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name navigation dtur3/r3-navigation \
 	roslaunch waypoint_nav odometry_control.launch --wait --screen
 
+# For Fiducial-based navigation (can be used at the same time than "navigation" for odometry)
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host \
 	--name waypoint_nav dtur3/r3-navigation \
