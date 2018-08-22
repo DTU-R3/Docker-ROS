@@ -14,7 +14,7 @@ First, ensure that your `ros_master` is running.
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
 	--network host --uts host -p 9090:9090 \
 	--name ws_bridge dtur3/r3-ws-bridge \
-	roslaunch rosbridge_server rosbridge_websocket.launch --wait --screen
+	roslaunch rosbridge_server rosbridge_websocket.launch unregister_timeout:=31556952 --wait --screen
 ```
 
 To run the WebSocket bridge from a distant computer:
@@ -23,10 +23,10 @@ To run the WebSocket bridge from a distant computer:
 DISTANT_ROBOT=raspi-ros00
 
 sudo docker run -dit --restart unless-stopped --log-opt max-size=10m \
-	--network host --uts host -p 9090:9090 \
+	-p 9090:9090 \
 	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
 	--name ws_bridge dtur3/r3-ws-bridge \
-	roslaunch rosbridge_server rosbridge_websocket.launch --wait --screen
+	roslaunch rosbridge_server rosbridge_websocket.launch unregister_timeout:=31556952 --wait --screen
 ```
 
 ## Development
