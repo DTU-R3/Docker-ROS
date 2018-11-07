@@ -1,12 +1,15 @@
 FROM ros:kinetic-ros-base-xenial
 
 RUN apt update && \
-	apt upgrade -y
+        apt upgrade -y
 
 RUN apt install -y python-pip
 
 RUN apt install -y \
-	ros-kinetic-tf2-geometry-msgs
+        ros-kinetic-tf2-geometry-msgs \
+	ros-kinetic-tf \
+	ros-kinetic-pcl-ros \
+	ros-kinetic-csm
 
 RUN rm -rf /var/lib/apt/lists/
 
