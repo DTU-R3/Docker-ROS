@@ -13,6 +13,7 @@ First, ensure that your ros_master is running.
 ```sh
 sudo docker run -it --rm \
 	--network host --uts host \
+	--privileged -v /dev/bus/usb:/dev/bus/usb \
 	dtur3/r3-realsense \
 	roslaunch realsense2_camera rs_t265.launch --wait --screen
 ```
@@ -25,6 +26,7 @@ DISTANT_ROBOT=raspi-ros00
 sudo docker run -it --rm \
 	--network host --uts host \
 	--env ROS_MASTER_URI=http://$DISTANT_ROBOT:11311 \
+	--privileged -v /dev/bus/usb:/dev/bus/usb \
 	dtur3/r3-realsense \
 	roslaunch realsense2_camera rs_t265.launch --wait --screen
 ```
