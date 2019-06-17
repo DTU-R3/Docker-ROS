@@ -1,0 +1,12 @@
+image: dtur3/r3-svo:latest
+manifests:
+  -
+    image: dtur3/r3-svo:arm
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: dtur3/r3-svo:amd64
+    platform:
+      architecture: amd64
+      os: linux
