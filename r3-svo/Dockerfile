@@ -26,5 +26,9 @@ RUN mkdir svo_install_overlay_ws && \
 
 RUN cp -r svo_binaries_1404_indigo_armhf/rpg_svo_example svo_install_overlay_ws/src
 
+RUN cd svo_install_overlay_ws/src && \
+        git clone https://github.com/catkin/catkin_simple.git && \
+        git clone https://github.com/ros/cmake_modules.git
+
 RUN cd svo_install_overlay_ws && \
         catkin build
