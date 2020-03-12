@@ -50,11 +50,6 @@ RUN /bin/bash -c " \
 	echo Done. \
 	"
 
-CMD echo "test 4"
-
-RUN apt install -y \
-	usbutils
-
 COPY entrypoint.sh /root/
 
 ENTRYPOINT ["/root/entrypoint.sh"]
