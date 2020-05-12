@@ -1,0 +1,12 @@
+image: dtur3/r3-pico-zense:latest
+manifests:
+  -
+    image: dtur3/r3-pico-zense:arm
+    platform:
+      architecture: arm
+      os: linux
+  -
+    image: dtur3/r3-pico-zense:amd64
+    platform:
+      architecture: amd64
+      os: linux
